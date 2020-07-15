@@ -21,7 +21,7 @@ class DatabaseController {
     //MARK: persistentContainer
     static var persistentContainer: NSPersistentContainer = {
         //The container that holds both data model entities
-        let container = NSPersistentContainer(name: "AboutCanada")
+        let container = NSPersistentContainer(name: "HclTask")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -47,25 +47,30 @@ class DatabaseController {
         }
     }
     
-    //MARK:- getAllFriends
-    class func getAllFriends() -> Array<AboutCanada> {
+    //MARK:- getAllDetails
+    class func getAllDetails() -> [CanadaDetails.row] {
         let all = NSFetchRequest<AboutCanada>(entityName: "AboutCanada")
-        var allFriends = [AboutCanada]()
         
         do {
             let fetched = try DatabaseController.getContext().fetch(all)
-            allFriends = fetched
+            let datas = fetched.map { (AboutCanada: AboutCanada) -> CanadaDetails.row in
+                let data = CanadaDetails.row(title: AboutCanada.title ?? "", description: AboutCanada.descriptions ?? "", imageHref: AboutCanada.imageHref ?? "")
+                
+                return data
+            }
+            return datas
+            
         } catch {
             let nserror = error as NSError
             //TODO: Handle Error
             print(nserror.description)
         }
         
-        return allFriends
+        return [CanadaDetails.row]()
     }
     
-    //MARK:- Delete ALL Friends From CoreData
-    class func deleteAllFriends() {
+    //MARK:- Delete ALL Details From CoreData
+    class func deleteAllDetails() {
         do {
             let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "AboutCanada")
             let deleteALL = NSBatchDeleteRequest(fetchRequest: deleteFetch)

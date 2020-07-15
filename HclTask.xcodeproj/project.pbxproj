@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6C96818024BDF3AC00201534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C96817F24BDF3AC00201534 /* AppDelegate.swift */; };
 		6C96818224BDF3AC00201534 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C96818124BDF3AC00201534 /* ViewController.swift */; };
-		6C96818524BDF3AC00201534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C96818324BDF3AC00201534 /* Main.storyboard */; };
 		6C96818824BDF3AC00201534 /* HclTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C96818624BDF3AC00201534 /* HclTask.xcdatamodeld */; };
 		6C96818A24BDF3AE00201534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C96818924BDF3AE00201534 /* Assets.xcassets */; };
 		6C96818D24BDF3AE00201534 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C96818B24BDF3AE00201534 /* LaunchScreen.storyboard */; };
@@ -24,6 +23,7 @@
 		6C9681C524BED64E00201534 /* Database+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681C424BED64E00201534 /* Database+Controller.swift */; };
 		6C9681CB24BEEB8D00201534 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681CA24BEEB8D00201534 /* Reachability.swift */; };
 		6C9681D024BEEEC100201534 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681CF24BEEEC100201534 /* UserDefaults+Extension.swift */; };
+		6C9681D224BF19CA00201534 /* ImageCache+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681D124BF19CA00201534 /* ImageCache+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		6C96817C24BDF3AC00201534 /* HclTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HclTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C96817F24BDF3AC00201534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C96818124BDF3AC00201534 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6C96818424BDF3AC00201534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C96818724BDF3AC00201534 /* HclTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HclTask.xcdatamodel; sourceTree = "<group>"; };
 		6C96818924BDF3AE00201534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C96818C24BDF3AE00201534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		6C9681C424BED64E00201534 /* Database+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Controller.swift"; sourceTree = "<group>"; };
 		6C9681CA24BEEB8D00201534 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		6C9681CF24BEEEC100201534 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		6C9681D124BF19CA00201534 /* ImageCache+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCache+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,6 @@
 				6C9681B624BEBE5800201534 /* AboutCanada */,
 				6C9681B024BDFA2200201534 /* Support Classes */,
 				6C96817F24BDF3AC00201534 /* AppDelegate.swift */,
-				6C96818324BDF3AC00201534 /* Main.storyboard */,
 				6C96818924BDF3AE00201534 /* Assets.xcassets */,
 				6C96818B24BDF3AE00201534 /* LaunchScreen.storyboard */,
 				6C96818E24BDF3AE00201534 /* Info.plist */,
@@ -155,6 +154,7 @@
 				6C9681BE24BEC38900201534 /* APIDownload */,
 				6C9681B324BE0B4100201534 /* Anchor */,
 				6C9681B124BDFA4800201534 /* Utils.swift */,
+				6C9681D124BF19CA00201534 /* ImageCache+Helpers.swift */,
 			);
 			path = "Support Classes";
 			sourceTree = "<group>";
@@ -341,7 +341,6 @@
 			files = (
 				6C96818D24BDF3AE00201534 /* LaunchScreen.storyboard in Resources */,
 				6C96818A24BDF3AE00201534 /* Assets.xcassets in Resources */,
-				6C96818524BDF3AC00201534 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +372,7 @@
 				6C9681C524BED64E00201534 /* Database+Controller.swift in Sources */,
 				6C96818224BDF3AC00201534 /* ViewController.swift in Sources */,
 				6C9681C224BEC44D00201534 /* HTTPClient.swift in Sources */,
+				6C9681D224BF19CA00201534 /* ImageCache+Helpers.swift in Sources */,
 				6C9681CB24BEEB8D00201534 /* Reachability.swift in Sources */,
 				6C9681D024BEEEC100201534 /* UserDefaults+Extension.swift in Sources */,
 				6C9681BD24BEBF6000201534 /* CanadaViewModel.swift in Sources */,
@@ -413,14 +413,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6C96818324BDF3AC00201534 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6C96818424BDF3AC00201534 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6C96818B24BDF3AE00201534 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

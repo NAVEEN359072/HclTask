@@ -22,9 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Checking internet connection availability
         checkReachable()
         // Override point for customization after application launch.
-        let nc = UINavigationController.init(rootViewController: ViewController())
-        self.window?.rootViewController = nc
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        let navigationController = UINavigationController()
+        let mainView = ViewController(nibName: nil, bundle: nil)
+        navigationController.viewControllers = [mainView]
+        self.window!.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+//        let nc = UINavigationController.init(rootViewController: ViewController())
+//        self.window?.rootViewController = nc
+//        self.window?.makeKeyAndVisible()
         return true
     }
 

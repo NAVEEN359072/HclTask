@@ -50,3 +50,17 @@ func rectForText(_ text: String, font: UIFont, maxSize: CGSize) -> CGSize {
     let size = CGSize(width: rect.size.width, height: rect.size.height)
     return size
 }
+
+// 14400 == 4 hrs ,call Api after 4 hrs only which based on timestamp
+var isAcceptableTimeforSymptomTrackerAPI: Bool {
+    get {
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: UserDefaults.standard.timeStampOfSymptomCheckerAPI)
+        if(year == 1970){
+            return true
+        }
+        let comparisionResult = UserDefaults.standard.timeStampOfSymptomCheckerAPI.addingTimeInterval(14400).compare(Date())//4 hrs
+        return  comparisionResult == .orderedAscending || comparisionResult == .orderedSame
+    }
+}

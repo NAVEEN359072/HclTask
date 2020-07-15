@@ -23,4 +23,31 @@ extension UserDefaults {
             UserDefaults.standard.set(newValue, forKey: "NetworkAvailable")
         }
     }
+    
+    var navigationTitle : String {
+        get {
+            if let title = UserDefaults.standard.value(forKey: "navigationTitle") as? String {
+                return title
+            }
+            return "About Canada"
+
+        } set {
+            UserDefaults.standard.set(newValue, forKey: "navigationTitle")
+        }
+    }
+    
+    var timeStampOfSymptomCheckerAPI: Date {
+        get {
+            let timeStampOfSymptomCheckerAPI =  UserDefaults.standard.object(forKey: "timeStampOfSymptomCheckerAPI")
+            if timeStampOfSymptomCheckerAPI != nil {
+                return (timeStampOfSymptomCheckerAPI as! Date)
+            } else {
+                return Date(timeIntervalSince1970: 0)
+            }
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "timeStampOfSymptomCheckerAPI")
+            UserDefaults.standard.synchronize()
+        }
+    }
 }
