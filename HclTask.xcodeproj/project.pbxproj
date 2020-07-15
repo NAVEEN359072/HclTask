@@ -17,6 +17,13 @@
 		6C9681A324BDF3AE00201534 /* HclTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681A224BDF3AE00201534 /* HclTaskUITests.swift */; };
 		6C9681B224BDFA4800201534 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681B124BDFA4800201534 /* Utils.swift */; };
 		6C9681B524BE0BEF00201534 /* Anchor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681B424BE0BEF00201534 /* Anchor+Helper.swift */; };
+		6C9681BB24BEBF4400201534 /* CanadaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681BA24BEBF4400201534 /* CanadaModel.swift */; };
+		6C9681BD24BEBF6000201534 /* CanadaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681BC24BEBF6000201534 /* CanadaViewModel.swift */; };
+		6C9681C024BEC42900201534 /* Decoder+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681BF24BEC42900201534 /* Decoder+Helper.swift */; };
+		6C9681C224BEC44D00201534 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681C124BEC44D00201534 /* HTTPClient.swift */; };
+		6C9681C524BED64E00201534 /* Database+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681C424BED64E00201534 /* Database+Controller.swift */; };
+		6C9681CB24BEEB8D00201534 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681CA24BEEB8D00201534 /* Reachability.swift */; };
+		6C9681D024BEEEC100201534 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9681CF24BEEEC100201534 /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,13 @@
 		6C9681A424BDF3AE00201534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C9681B124BDFA4800201534 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6C9681B424BE0BEF00201534 /* Anchor+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchor+Helper.swift"; sourceTree = "<group>"; };
+		6C9681BA24BEBF4400201534 /* CanadaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaModel.swift; sourceTree = "<group>"; };
+		6C9681BC24BEBF6000201534 /* CanadaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewModel.swift; sourceTree = "<group>"; };
+		6C9681BF24BEC42900201534 /* Decoder+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Helper.swift"; sourceTree = "<group>"; };
+		6C9681C124BEC44D00201534 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		6C9681C424BED64E00201534 /* Database+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Controller.swift"; sourceTree = "<group>"; };
+		6C9681CA24BEEB8D00201534 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		6C9681CF24BEEEC100201534 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +117,14 @@
 		6C96817E24BDF3AC00201534 /* HclTask */ = {
 			isa = PBXGroup;
 			children = (
+				6C9681C324BED5AB00201534 /* CoreData */,
+				6C9681B624BEBE5800201534 /* AboutCanada */,
 				6C9681B024BDFA2200201534 /* Support Classes */,
 				6C96817F24BDF3AC00201534 /* AppDelegate.swift */,
-				6C96818124BDF3AC00201534 /* ViewController.swift */,
 				6C96818324BDF3AC00201534 /* Main.storyboard */,
 				6C96818924BDF3AE00201534 /* Assets.xcassets */,
 				6C96818B24BDF3AE00201534 /* LaunchScreen.storyboard */,
 				6C96818E24BDF3AE00201534 /* Info.plist */,
-				6C96818624BDF3AC00201534 /* HclTask.xcdatamodeld */,
 			);
 			path = HclTask;
 			sourceTree = "<group>";
@@ -136,6 +150,9 @@
 		6C9681B024BDFA2200201534 /* Support Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6C9681CC24BEEE4B00201534 /* UserDefault */,
+				6C9681C924BEEB2C00201534 /* NetworkReachability */,
+				6C9681BE24BEC38900201534 /* APIDownload */,
 				6C9681B324BE0B4100201534 /* Anchor */,
 				6C9681B124BDFA4800201534 /* Utils.swift */,
 			);
@@ -148,6 +165,74 @@
 				6C9681B424BE0BEF00201534 /* Anchor+Helper.swift */,
 			);
 			path = Anchor;
+			sourceTree = "<group>";
+		};
+		6C9681B624BEBE5800201534 /* AboutCanada */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681B924BEBF1000201534 /* CanadaModel */,
+				6C9681B824BEBEDA00201534 /* CanadaViewModel */,
+				6C9681B724BEBEAF00201534 /* CanadaView */,
+			);
+			path = AboutCanada;
+			sourceTree = "<group>";
+		};
+		6C9681B724BEBEAF00201534 /* CanadaView */ = {
+			isa = PBXGroup;
+			children = (
+				6C96818124BDF3AC00201534 /* ViewController.swift */,
+			);
+			path = CanadaView;
+			sourceTree = "<group>";
+		};
+		6C9681B824BEBEDA00201534 /* CanadaViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681BC24BEBF6000201534 /* CanadaViewModel.swift */,
+			);
+			path = CanadaViewModel;
+			sourceTree = "<group>";
+		};
+		6C9681B924BEBF1000201534 /* CanadaModel */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681BA24BEBF4400201534 /* CanadaModel.swift */,
+			);
+			path = CanadaModel;
+			sourceTree = "<group>";
+		};
+		6C9681BE24BEC38900201534 /* APIDownload */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681BF24BEC42900201534 /* Decoder+Helper.swift */,
+				6C9681C124BEC44D00201534 /* HTTPClient.swift */,
+			);
+			path = APIDownload;
+			sourceTree = "<group>";
+		};
+		6C9681C324BED5AB00201534 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6C96818624BDF3AC00201534 /* HclTask.xcdatamodeld */,
+				6C9681C424BED64E00201534 /* Database+Controller.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		6C9681C924BEEB2C00201534 /* NetworkReachability */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681CA24BEEB8D00201534 /* Reachability.swift */,
+			);
+			path = NetworkReachability;
+			sourceTree = "<group>";
+		};
+		6C9681CC24BEEE4B00201534 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				6C9681CF24BEEEC100201534 /* UserDefaults+Extension.swift */,
+			);
+			path = UserDefault;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,9 +366,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C9681C024BEC42900201534 /* Decoder+Helper.swift in Sources */,
 				6C9681B524BE0BEF00201534 /* Anchor+Helper.swift in Sources */,
+				6C9681BB24BEBF4400201534 /* CanadaModel.swift in Sources */,
 				6C96818824BDF3AC00201534 /* HclTask.xcdatamodeld in Sources */,
+				6C9681C524BED64E00201534 /* Database+Controller.swift in Sources */,
 				6C96818224BDF3AC00201534 /* ViewController.swift in Sources */,
+				6C9681C224BEC44D00201534 /* HTTPClient.swift in Sources */,
+				6C9681CB24BEEB8D00201534 /* Reachability.swift in Sources */,
+				6C9681D024BEEEC100201534 /* UserDefaults+Extension.swift in Sources */,
+				6C9681BD24BEBF6000201534 /* CanadaViewModel.swift in Sources */,
 				6C96818024BDF3AC00201534 /* AppDelegate.swift in Sources */,
 				6C9681B224BDFA4800201534 /* Utils.swift in Sources */,
 			);

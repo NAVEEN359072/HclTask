@@ -8,14 +8,19 @@
 
 import UIKit
 import CoreData
+import SystemConfiguration
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com")
+    private let reachable = Reachability()!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //Checking internet connection availability
+        checkReachable()
         // Override point for customization after application launch.
         let nc = UINavigationController.init(rootViewController: ViewController())
         self.window?.rootViewController = nc
@@ -45,6 +50,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    
+    
+    /**
+     This method is called to set up internet connection tracking
+     */
+    
+    func checkReachable()
+    {
+        
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(self.reachability!, &flags)
+        
+        if (isNetworkReachable(with: flags))
+        {
+            
+            UserDefaults.standard.isNetworkAvailable = true
+           
+            print (flags)
+            if flags.contains(.isWWAN) {
+                print("Reachable:via mobile")
+                
+                return
+            }
+            print("Reachable:via wifi")
+        }
+        else if (!isNetworkReachable(with: flags)) {
+            
+            UserDefaults.standard.isNetworkAvailable = false
+            print("Unreachable:Sorry no connection")
+            print (flags)
+            return
+        }
+    }
+    
+    
+    func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
+        
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            UserDefaults.standard.isNetworkAvailable = true
+            print("Reachable via WiFi")
+        case .cellular:
+            UserDefaults.standard.isNetworkAvailable = true
+            print("Reachable via Cellular")
+        case .none:
+            UserDefaults.standard.isNetworkAvailable = false
+            print("Network not reachable")
+        }
     }
 
     // MARK: - Core Data stack
