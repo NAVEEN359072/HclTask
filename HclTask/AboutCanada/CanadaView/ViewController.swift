@@ -90,10 +90,13 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! AboutCanadaTableViewCell
-        cell.canadaImgView.loadImageviewUsingUrlString(urlString: canadaVM.getCanadaImage(for: indexPath) ?? "")
+        if canadaVM.getCanadaImage(for: indexPath) == "" {
+            cell.canadaImgView.image = UIImage.init(named: "noImage")
+        }else {
+            cell.canadaImgView.loadImageviewUsingUrlString(urlString: canadaVM.getCanadaImage(for: indexPath) ?? "")
+        }
         cell.titleLbl.text = canadaVM.getCanadaTitle(for: indexPath)
         cell.desciptionLbl.text = canadaVM.getCanadaDescription(for: indexPath)
-        cell.imageHeight = canadaVM.getCanadaImage(for: indexPath) == "" ? 0 : 150
         cell.titleHeight = cell.titleLbl.text == "" ?  0 : rectForText(cell.titleLbl.text ?? "", font: cell.titleLbl.font, maxSize:CGSize(width: 256, height: 2000)).height
         cell.descriptionHeight = cell.desciptionLbl.text == "" ? 0 :  rectForText(cell.desciptionLbl.text ?? "", font: cell.desciptionLbl.font, maxSize:CGSize(width: 256, height: 2000)).height
         cell.selectionStyle = .none

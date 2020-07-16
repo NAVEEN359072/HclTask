@@ -30,24 +30,25 @@ class AboutCanadaTableViewCell: UITableViewCell {
         
         addSubview(containView)
         containView.layer.cornerRadius = 10
-        containView.layer.borderWidth = 1.0
-        containView.layer.borderColor = UIColor.lightGray.cgColor
-        containView.anchor(top:topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding:UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20) )
+        containView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        containView.anchor(top:topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding:UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10) )
         
         //canadaImgView
         canadaImgView.contentMode = .scaleAspectFit
+        canadaImgView.layer.cornerRadius = 50/2
+        canadaImgView.layer.masksToBounds = true
         containView.addSubview(canadaImgView)
-        canadaImgView.anchor(top: containView.topAnchor, leading: containView.leadingAnchor, bottom: nil, trailing: containView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10), size: CGSize.init(width: 0, height: imageHeight))
+        canadaImgView.anchor(top: containView.topAnchor, leading: containView.leadingAnchor, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10), size: CGSize.init(width: 50, height: 50))
         //title
         titleLbl.numberOfLines = 0
         titleLbl.lineBreakMode = .byWordWrapping
         containView.addSubview(titleLbl)
-        titleLbl.anchor(top: canadaImgView.bottomAnchor, leading: containView.leadingAnchor, bottom: nil, trailing: containView.trailingAnchor, padding: UIEdgeInsets(top: 8, left: 10, bottom: 0, right: 10) , size: CGSize.init(width: 0, height: titleHeight))
+        titleLbl.anchor(top: containView.topAnchor, leading: canadaImgView.trailingAnchor, bottom: nil, trailing: containView.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10) , size: CGSize.init(width: 0, height: titleHeight))
         //description
         desciptionLbl.numberOfLines = 0
         desciptionLbl.lineBreakMode = .byWordWrapping
         containView.addSubview(desciptionLbl)
-        desciptionLbl.anchor(top: titleLbl.bottomAnchor, leading: containView.leadingAnchor, bottom: containView.bottomAnchor, trailing: containView.trailingAnchor, padding: UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10) , size: CGSize.init(width: 0, height: descriptionHeight))
+        desciptionLbl.anchor(top: canadaImgView.bottomAnchor, leading: containView.leadingAnchor, bottom: containView.bottomAnchor, trailing: containView.trailingAnchor, padding: UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10) , size: CGSize.init(width: 0, height: descriptionHeight))
         
     }
     
