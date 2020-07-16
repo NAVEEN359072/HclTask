@@ -53,8 +53,8 @@ class DatabaseController {
         
         do {
             let fetched = try DatabaseController.getContext().fetch(all)
-            let datas = fetched.map { (AboutCanada: AboutCanada) -> CanadaDetails.row in
-                let data = CanadaDetails.row(title: AboutCanada.title ?? "", description: AboutCanada.descriptions ?? "", imageHref: AboutCanada.imageHref ?? "")
+            let datas = fetched.map { (aboutCanada: AboutCanada) -> CanadaDetails.row in
+                let data = CanadaDetails.row(title: aboutCanada.title ?? "", description: aboutCanada.descriptions ?? "", imageHref: aboutCanada.imageHref ?? "")!
                 
                 return data
             }

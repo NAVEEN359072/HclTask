@@ -14,7 +14,7 @@ class CanadaViewModel {
     
     //Original Array from Core Data
     
-    var canadaDetails = [CanadaDetails.row]()
+   var canadaDetails = [CanadaDetails.row]()
     
     //New Values to Core Data
     
@@ -28,7 +28,7 @@ class CanadaViewModel {
             DatabaseController.saveContext()
             //canadaDetails
             self.canadaDetails = DatabaseController.getAllDetails()
-            ViewController().getSuccessData()
+            self.viewController?.getSuccessData()
         }
     }
     
@@ -38,21 +38,14 @@ class CanadaViewModel {
         for detail in details {
             guard let entity = NSEntityDescription.entity(forEntityName: "AboutCanada", in: DatabaseController.getContext()) else {
                 fatalError("could not find entity description")
-                
             }
             let canada = NSManagedObject(entity: entity, insertInto: DatabaseController.getContext())
             // Set the data to the entity
             canada.setValue(detail.title, forKey: "title")
             canada.setValue(detail.description, forKey: "descriptions")
-            let url: NSURL = NSURL(string: detail.imageHref ?? "")!
-            do {
-                _ = try NSData(contentsOf: url as URL, options: NSData.ReadingOptions())
+            if URL(string: detail.imageHref ?? "") != nil  {
                 canada.setValue(detail.imageHref, forKey: "imageHref")
-            } catch {
-                canada.setValue("", forKey: "imageHref")
-                print(error)
             }
-            ViewController().getSuccessData()
         }
     }
     
@@ -92,7 +85,7 @@ class CanadaViewModel {
     // get the value from decoder
     
     func callCanadaDetails()  {
-         GetCanadaDetailsApi(withResult:{ (_ result: Result<CanadaDetails, ApiErrors>) in
+        GetCanadaDetailsApi(withResult:{ (_ result: Result<CanadaDetails, ApiErrors>) in
             switch result{
             case .success(let data):
                 print("data",data)
@@ -102,7 +95,13 @@ class CanadaViewModel {
             case .failure(let error):
                 print("error",error)
             }
-    })
- }
+        })
+    }
     
+    weak var viewController : ViewController?
+    
+    // MARK: - Initializers
+    init(_ viewController:ViewController ) {
+       self.viewController = viewController
+    }
 }

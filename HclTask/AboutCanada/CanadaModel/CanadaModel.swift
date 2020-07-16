@@ -29,11 +29,14 @@ struct CanadaDetails: Codable {
         var description: String?
         var imageHref: String?
         
-        init(title: String, description: String, imageHref: String) {
-            self.title = title
-            self.description = description
-            self.imageHref = imageHref
+        init?(title: String, description: String, imageHref: String) {
+            if title == "<null>" && description == "<null>" && imageHref == "<null>" {
+                return nil
+            }else {
+                self.title = title
+                self.description = description
+                self.imageHref = imageHref
+            }
         }
-        
     }
 }
